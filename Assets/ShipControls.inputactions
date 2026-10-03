@@ -65,6 +65,26 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "ToggleLeftEngine",
+                    "type": "Button",
+                    "id": "5d08a900-8607-4db6-bb41-1805a10763a4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "ToggleRightEngine",
+                    "type": "Button",
+                    "id": "60b8f493-4409-4aab-a48b-59e7f56e4fb6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -153,6 +173,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ToggleFlightAssist",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4226d9f-5cb4-43e2-add0-5a7d7cbd1c48",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleLeftEngine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d39630af-6cf7-4fd5-af53-91754b596977",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleRightEngine",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,0 +1,45 @@
+using UnityEngine;
+
+public class Engine : MonoBehaviour, IShipModule
+{
+    [Header("Thrust")]
+    [SerializeField] private float thrustForce = 25f;
+    
+    [Header("Visual")]
+    [SerializeField] private ParticleSystem thrusterParticles;
+
+    private Rigidbody _shipRb;
+    private float _throttle;
+    private bool _running = true;
+
+    private void Awake()
+    {
+        _shipRb = GetComponentInParent<Rigidbody>();
+    }
+
+    public void SetThrottle(float throttle)
+    {
+        _throttle = throttle;
+    }
+
+    public void Toggle() => _running = !_running;
+
+    private void FixedUpdate()
+    {
+        if (!_running) return;
+
+        Vector3 force = transform.forward * (_throttle * thrustForce);
+        _shipRb.AddForceAtPosition(force, transform.position, ForceMode.Force);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        bool emitting = _running && _throttle > 0.01f;
+
+        if (emitting && !thrusterParticles.isEmitting)
+            thrusterParticles.Play();
+        else if (!emitting && thrusterParticles.isEmitting)
+            thrusterParticles.Stop();
+    }
+}

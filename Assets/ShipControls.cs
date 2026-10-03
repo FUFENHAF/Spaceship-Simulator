@@ -151,6 +151,26 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""ToggleLeftEngine"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d08a900-8607-4db6-bb41-1805a10763a4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""ToggleRightEngine"",
+                    ""type"": ""Button"",
+                    ""id"": ""60b8f493-4409-4aab-a48b-59e7f56e4fb6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -241,6 +261,28 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleFlightAssist"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4226d9f-5cb4-43e2-add0-5a7d7cbd1c48"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleLeftEngine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d39630af-6cf7-4fd5-af53-91754b596977"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleRightEngine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -255,6 +297,8 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
         m_Ship_LookX = m_Ship.FindAction("LookX", throwIfNotFound: true);
         m_Ship_LookY = m_Ship.FindAction("LookY", throwIfNotFound: true);
         m_Ship_ToggleFlightAssist = m_Ship.FindAction("ToggleFlightAssist", throwIfNotFound: true);
+        m_Ship_ToggleLeftEngine = m_Ship.FindAction("ToggleLeftEngine", throwIfNotFound: true);
+        m_Ship_ToggleRightEngine = m_Ship.FindAction("ToggleRightEngine", throwIfNotFound: true);
     }
 
     ~@ShipControls()
@@ -341,6 +385,8 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Ship_LookX;
     private readonly InputAction m_Ship_LookY;
     private readonly InputAction m_Ship_ToggleFlightAssist;
+    private readonly InputAction m_Ship_ToggleLeftEngine;
+    private readonly InputAction m_Ship_ToggleRightEngine;
     /// <summary>
     /// Provides access to input actions defined in input action map "Ship".
     /// </summary>
@@ -376,6 +422,14 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Ship/ToggleFlightAssist".
         /// </summary>
         public InputAction @ToggleFlightAssist => m_Wrapper.m_Ship_ToggleFlightAssist;
+        /// <summary>
+        /// Provides access to the underlying input action "Ship/ToggleLeftEngine".
+        /// </summary>
+        public InputAction @ToggleLeftEngine => m_Wrapper.m_Ship_ToggleLeftEngine;
+        /// <summary>
+        /// Provides access to the underlying input action "Ship/ToggleRightEngine".
+        /// </summary>
+        public InputAction @ToggleRightEngine => m_Wrapper.m_Ship_ToggleRightEngine;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -420,6 +474,12 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
             @ToggleFlightAssist.started += instance.OnToggleFlightAssist;
             @ToggleFlightAssist.performed += instance.OnToggleFlightAssist;
             @ToggleFlightAssist.canceled += instance.OnToggleFlightAssist;
+            @ToggleLeftEngine.started += instance.OnToggleLeftEngine;
+            @ToggleLeftEngine.performed += instance.OnToggleLeftEngine;
+            @ToggleLeftEngine.canceled += instance.OnToggleLeftEngine;
+            @ToggleRightEngine.started += instance.OnToggleRightEngine;
+            @ToggleRightEngine.performed += instance.OnToggleRightEngine;
+            @ToggleRightEngine.canceled += instance.OnToggleRightEngine;
         }
 
         /// <summary>
@@ -449,6 +509,12 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
             @ToggleFlightAssist.started -= instance.OnToggleFlightAssist;
             @ToggleFlightAssist.performed -= instance.OnToggleFlightAssist;
             @ToggleFlightAssist.canceled -= instance.OnToggleFlightAssist;
+            @ToggleLeftEngine.started -= instance.OnToggleLeftEngine;
+            @ToggleLeftEngine.performed -= instance.OnToggleLeftEngine;
+            @ToggleLeftEngine.canceled -= instance.OnToggleLeftEngine;
+            @ToggleRightEngine.started -= instance.OnToggleRightEngine;
+            @ToggleRightEngine.performed -= instance.OnToggleRightEngine;
+            @ToggleRightEngine.canceled -= instance.OnToggleRightEngine;
         }
 
         /// <summary>
@@ -531,5 +597,19 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleFlightAssist(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ToggleLeftEngine" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleLeftEngine(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ToggleRightEngine" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleRightEngine(InputAction.CallbackContext context);
     }
 }
