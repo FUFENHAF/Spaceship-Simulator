@@ -85,6 +85,16 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "Mine",
+                    "type": "Button",
+                    "id": "8719fcd8-33d6-4c55-86e3-5c9444ee3c7e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -195,6 +205,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ToggleRightEngine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f3d96f5d-f63a-4fbf-9a49-8aff78e4b6c5",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mine",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

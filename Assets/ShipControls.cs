@@ -171,6 +171,16 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Mine"",
+                    ""type"": ""Button"",
+                    ""id"": ""8719fcd8-33d6-4c55-86e3-5c9444ee3c7e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -283,6 +293,17 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleRightEngine"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f3d96f5d-f63a-4fbf-9a49-8aff78e4b6c5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -299,6 +320,7 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
         m_Ship_ToggleFlightAssist = m_Ship.FindAction("ToggleFlightAssist", throwIfNotFound: true);
         m_Ship_ToggleLeftEngine = m_Ship.FindAction("ToggleLeftEngine", throwIfNotFound: true);
         m_Ship_ToggleRightEngine = m_Ship.FindAction("ToggleRightEngine", throwIfNotFound: true);
+        m_Ship_Mine = m_Ship.FindAction("Mine", throwIfNotFound: true);
     }
 
     ~@ShipControls()
@@ -387,6 +409,7 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Ship_ToggleFlightAssist;
     private readonly InputAction m_Ship_ToggleLeftEngine;
     private readonly InputAction m_Ship_ToggleRightEngine;
+    private readonly InputAction m_Ship_Mine;
     /// <summary>
     /// Provides access to input actions defined in input action map "Ship".
     /// </summary>
@@ -430,6 +453,10 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Ship/ToggleRightEngine".
         /// </summary>
         public InputAction @ToggleRightEngine => m_Wrapper.m_Ship_ToggleRightEngine;
+        /// <summary>
+        /// Provides access to the underlying input action "Ship/Mine".
+        /// </summary>
+        public InputAction @Mine => m_Wrapper.m_Ship_Mine;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -480,6 +507,9 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
             @ToggleRightEngine.started += instance.OnToggleRightEngine;
             @ToggleRightEngine.performed += instance.OnToggleRightEngine;
             @ToggleRightEngine.canceled += instance.OnToggleRightEngine;
+            @Mine.started += instance.OnMine;
+            @Mine.performed += instance.OnMine;
+            @Mine.canceled += instance.OnMine;
         }
 
         /// <summary>
@@ -515,6 +545,9 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
             @ToggleRightEngine.started -= instance.OnToggleRightEngine;
             @ToggleRightEngine.performed -= instance.OnToggleRightEngine;
             @ToggleRightEngine.canceled -= instance.OnToggleRightEngine;
+            @Mine.started -= instance.OnMine;
+            @Mine.performed -= instance.OnMine;
+            @Mine.canceled -= instance.OnMine;
         }
 
         /// <summary>
@@ -611,5 +644,12 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleRightEngine(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Mine" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMine(InputAction.CallbackContext context);
     }
 }
