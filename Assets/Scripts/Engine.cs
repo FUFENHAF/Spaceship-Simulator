@@ -15,6 +15,7 @@ public class Engine : MonoBehaviour, IShipModule
     private void Awake()
     {
         _shipRb = GetComponentInParent<Rigidbody>();
+        GetComponentInParent<AttachPoint>()?.Attach(this);
     }
 
     public void SetThrottle(float throttle)

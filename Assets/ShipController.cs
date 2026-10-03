@@ -11,6 +11,9 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float pitchTorque = 20f;
     [SerializeField] private float yawTorque = 20f;
 
+    [Header("Modules")]
+    [SerializeField] private AttachPoint[] attachPoints;
+
     private ShipControls _controls;
     private Rigidbody _rb;
     
@@ -24,11 +27,15 @@ public class ShipController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _controls = new ShipControls();
         _controls.Ship.ToggleFlightAssist.performed += OnToggleFlightAssist;
+        _controls.Ship.ToggleLeftEngine.performed += OnToggleLeftEngine;
+        _controls.Ship.ToggleRightEngine.performed += OnToggleRightEngine;
     }
 
     private void OnDestroy()
     {
         _controls.Ship.ToggleFlightAssist.performed -= OnToggleFlightAssist;
+        _controls.Ship.ToggleLeftEngine.performed -= OnToggleLeftEngine;
+        _controls.Ship.ToggleRightEngine.performed -= OnToggleRightEngine;
     }
 
     private void OnEnable()
@@ -41,9 +48,15 @@ public class ShipController : MonoBehaviour
         _controls.Ship.Disable();
     }
 
-    public void OnToggleFlightAssist(InputAction.CallbackContext ctx)
+    public void OnToggleFlightAssist(InputAction.CallbackContext ctx) => _assistEnabled = !_assistEnabled;
+    private void OnToggleLeftEngine(InputAction.CallbackContext ctx)  => ToggleEngine(0);
+    private void OnToggleRightEngine(InputAction.CallbackContext ctx) => ToggleEngine(1);
+
+    private void ToggleEngine(int index)
     {
-        _assistEnabled = !_assistEnabled;
+        if (attachPoints.Length <= index) return;
+        if (attachPoints[index].Module is Engine engine)
+            engine.Toggle();
     }
 
     private void FixedUpdate()
@@ -51,12 +64,14 @@ public class ShipController : MonoBehaviour
         float throttle = _controls.Ship.Throttle.ReadValue<float>();
         Vector2 rotation = _controls.Ship.Rotation.ReadValue<Vector2>();
 
-        _rb.AddRelativeForce(Vector3.forward * (throttle * thrustForce));
         _rb.AddRelativeTorque(new Vector3(
             rotation.y * pitchTorque,
             rotation.x * yawTorque,
             0f));
 
         _rb.angularDamping = _assistEnabled ? _angularDragStrong : _angularDragWeak;
+
+        foreach (AttachPoint point in attachPoints)
+            point.Module?.SetThrottle(throttle);
     }
 }
