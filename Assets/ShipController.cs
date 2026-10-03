@@ -63,6 +63,7 @@ public class ShipController : MonoBehaviour
     {
         float throttle = _controls.Ship.Throttle.ReadValue<float>();
         Vector2 rotation = _controls.Ship.Rotation.ReadValue<Vector2>();
+        float miningInput = _controls.Ship.Mine.IsPressed() ? 1f : 0f;
 
         _rb.AddRelativeTorque(new Vector3(
             rotation.y * pitchTorque,
@@ -72,6 +73,14 @@ public class ShipController : MonoBehaviour
         _rb.angularDamping = _assistEnabled ? _angularDragStrong : _angularDragWeak;
 
         foreach (AttachPoint point in attachPoints)
-            point.Module?.SetThrottle(throttle);
+            switch (point.Module)
+            {
+                case Engine engine:
+                    engine.SetThrottle(throttle);
+                    break;
+                case MiningLaser laser:
+                    laser.SetThrottle(miningInput);
+                    break;
+            }
     }
 }
