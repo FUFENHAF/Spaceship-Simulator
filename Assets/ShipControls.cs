@@ -141,6 +141,16 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": true,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""ToggleFlightAssist"",
+                    ""type"": ""Button"",
+                    ""id"": ""d1fa9dcf-e733-4ce6-b70a-ac6ecc3fe251"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -220,6 +230,17 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
                     ""action"": ""LookY"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfd9095e-c817-4aff-a8ab-2e38e69bf603"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleFlightAssist"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -233,6 +254,7 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
         m_Ship_Look = m_Ship.FindAction("Look", throwIfNotFound: true);
         m_Ship_LookX = m_Ship.FindAction("LookX", throwIfNotFound: true);
         m_Ship_LookY = m_Ship.FindAction("LookY", throwIfNotFound: true);
+        m_Ship_ToggleFlightAssist = m_Ship.FindAction("ToggleFlightAssist", throwIfNotFound: true);
     }
 
     ~@ShipControls()
@@ -318,6 +340,7 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Ship_Look;
     private readonly InputAction m_Ship_LookX;
     private readonly InputAction m_Ship_LookY;
+    private readonly InputAction m_Ship_ToggleFlightAssist;
     /// <summary>
     /// Provides access to input actions defined in input action map "Ship".
     /// </summary>
@@ -349,6 +372,10 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Ship/LookY".
         /// </summary>
         public InputAction @LookY => m_Wrapper.m_Ship_LookY;
+        /// <summary>
+        /// Provides access to the underlying input action "Ship/ToggleFlightAssist".
+        /// </summary>
+        public InputAction @ToggleFlightAssist => m_Wrapper.m_Ship_ToggleFlightAssist;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -390,6 +417,9 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
             @LookY.started += instance.OnLookY;
             @LookY.performed += instance.OnLookY;
             @LookY.canceled += instance.OnLookY;
+            @ToggleFlightAssist.started += instance.OnToggleFlightAssist;
+            @ToggleFlightAssist.performed += instance.OnToggleFlightAssist;
+            @ToggleFlightAssist.canceled += instance.OnToggleFlightAssist;
         }
 
         /// <summary>
@@ -416,6 +446,9 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
             @LookY.started -= instance.OnLookY;
             @LookY.performed -= instance.OnLookY;
             @LookY.canceled -= instance.OnLookY;
+            @ToggleFlightAssist.started -= instance.OnToggleFlightAssist;
+            @ToggleFlightAssist.performed -= instance.OnToggleFlightAssist;
+            @ToggleFlightAssist.canceled -= instance.OnToggleFlightAssist;
         }
 
         /// <summary>
@@ -491,5 +524,12 @@ public partial class @ShipControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLookY(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ToggleFlightAssist" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleFlightAssist(InputAction.CallbackContext context);
     }
 }

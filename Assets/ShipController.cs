@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 public class ShipController : MonoBehaviour
@@ -12,11 +13,22 @@ public class ShipController : MonoBehaviour
 
     private ShipControls _controls;
     private Rigidbody _rb;
+    
+    // Flight assist slows the ship down when necessary - only for spinning!
+    private bool _assistEnabled = true;
+    private float _angularDragStrong = 1f;
+    private float _angularDragWeak = 0.1f;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _controls = new ShipControls();
+        _controls.Ship.ToggleFlightAssist.performed += OnToggleFlightAssist;
+    }
+
+    private void OnDestroy()
+    {
+        _controls.Ship.ToggleFlightAssist.performed -= OnToggleFlightAssist;
     }
 
     private void OnEnable()
@@ -29,6 +41,11 @@ public class ShipController : MonoBehaviour
         _controls.Ship.Disable();
     }
 
+    public void OnToggleFlightAssist(InputAction.CallbackContext ctx)
+    {
+        _assistEnabled = !_assistEnabled;
+    }
+
     private void FixedUpdate()
     {
         float throttle = _controls.Ship.Throttle.ReadValue<float>();
@@ -39,5 +56,7 @@ public class ShipController : MonoBehaviour
             rotation.y * pitchTorque,
             rotation.x * yawTorque,
             0f));
+
+        _rb.angularDamping = _assistEnabled ? _angularDragStrong : _angularDragWeak;
     }
 }
