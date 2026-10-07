@@ -120,3 +120,7 @@ InitTestScene*.unity*
 *.user
 .vs/
 .idea/
+
+Assets/_Recovery/
+*.slnx
+Assets/_Recovery.meta

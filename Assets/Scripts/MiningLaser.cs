@@ -31,22 +31,27 @@ public class MiningLaser : MonoBehaviour, IShipModule
     private void Mine()
     {
         bool firing = _throttle > 0.5f;
-
         if (!firing) { beam.enabled = false; return; }
 
         Vector3 origin = beamOrigin.position;
+        Debug.DrawRay(origin, beamOrigin.forward * range, Color.red);   // A: vidíš čáru ve Scene
+
         if (Physics.Raycast(origin, beamOrigin.forward, out RaycastHit hit, range))
         {
+            Debug.Log($"LASER HIT: {hit.collider.name} at {hit.distance}");   // B
             beam.enabled = true;
             beam.SetPosition(0, origin);
             beam.SetPosition(1, hit.point);
 
-            // TODO: asteroid.ore -= mineRate * Time.deltaTime
+            if (hit.collider.GetComponentInParent<Asteroid>() is Asteroid asteroid)
+            {
+                Debug.Log("ASTEROID FOUND, mining");   // C
+                asteroid.Mine(mineRate * Time.deltaTime);
+            }
         }
         else
         {
             beam.enabled = false;
         }
-        Debug.Log($"Hit: {hit.collider.name} at {hit.distance}");
     }
 }
