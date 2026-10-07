@@ -5550,6 +5550,7 @@ GameObject:
   - component: {fileID: 690633124}
   - component: {fileID: 690633123}
   - component: {fileID: 690633122}
+  - component: {fileID: 690633126}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -5624,13 +5625,29 @@ Transform:
   m_GameObject: {fileID: 690633121}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26196, y: -0, z: 3.72}
+  m_LocalPosition: {x: -0.07, y: 0.33, z: 5.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 506784757}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &690633126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690633121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca98b9fdb346dd0c5bfdfc50aee5c6d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FractureAsteroid
+  fractured: {fileID: 7273956540791742907, guid: 9cb5e7465eef1af4988889e41a071493, type: 3}
+  fragmentSpeed: 2
+  fragmentSpin: 1
+  fragmentLifetime: 30
 --- !u!1 &740513587
 GameObject:
   m_ObjectHideFlags: 0
@@ -15902,7 +15919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8202099386964702900, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.97758996
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8202099386964702900, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15910,7 +15927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8202099386964702900, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8202099386964702900, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}
       propertyPath: m_LocalRotation.w

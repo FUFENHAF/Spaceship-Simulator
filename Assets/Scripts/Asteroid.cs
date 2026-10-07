@@ -12,7 +12,7 @@ public class Asteroid : MonoBehaviour
     [SerializeField] private Color baseColor = Color.gray;
     [SerializeField] private Color hotColor = new Color(1f, 0.3f, 0.1f);
 
-    private Fracture _fracture;
+    private FractureAsteroid _fracture;
     private Material _material;
     private float _heat;
 
