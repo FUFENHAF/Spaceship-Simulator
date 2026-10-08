@@ -10,7 +10,8 @@ public class FractureAsteroid : MonoBehaviour
     [SerializeField] private float fragmentSpin = 1f;
 
     [Header("Cleanup")]
-    [SerializeField] private float fragmentLifetime = 10f;
+    [SerializeField] private float fragmentLifetimeMin = 5f;
+    [SerializeField] private float fragmentLifetimeMax = 10f;
 
     public void FractureObject()
     {
@@ -35,7 +36,7 @@ public class FractureAsteroid : MonoBehaviour
                 r.material.color = color;
         }
 
-        Destroy(broken, fragmentLifetime);
-        Destroy(gameObject);
+        float lifetime = Random.Range(fragmentLifetimeMin, fragmentLifetimeMax);
+        Destroy(broken, lifetime);
     }
 }
