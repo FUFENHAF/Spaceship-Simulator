@@ -38,4 +38,6 @@ public class Asteroid : MonoBehaviour
 
         _material.color = Color.Lerp(baseColor, hotColor, _heat);
     }
+
+    public Color CurrentColor => Color.Lerp(baseColor, hotColor, _heat);
 }

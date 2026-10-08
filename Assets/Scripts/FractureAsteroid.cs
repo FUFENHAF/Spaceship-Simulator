@@ -6,15 +6,22 @@ public class FractureAsteroid : MonoBehaviour
     public GameObject fractured;
 
     [Header("Explosion")]
-    [SerializeField] private float fragmentSpeed = 2f;      // jak rychle odletí
-    [SerializeField] private float fragmentSpin = 1f;     // jak se roztočí
-    [SerializeField] private float fragmentLifetime = 30f; // kdy zmizí (úklid scény)
+    [SerializeField] private float fragmentSpeed = 2f;
+    [SerializeField] private float fragmentSpin = 1f;
+
+    [Header("Cleanup")]
+    [SerializeField] private float fragmentLifetime = 10f;
 
     public void FractureObject()
     {
         GameObject broken = Instantiate(fractured, transform.position, transform.rotation);
 
         Rigidbody ownRb = GetComponent<Rigidbody>();
+
+        Color color = Color.white;
+        Asteroid asteroid = GetComponent<Asteroid>();
+        if (asteroid != null)
+            color = asteroid.CurrentColor;
 
         foreach (Rigidbody rb in broken.GetComponentsInChildren<Rigidbody>())
         {
@@ -24,9 +31,11 @@ public class FractureAsteroid : MonoBehaviour
             rb.linearVelocity += away * fragmentSpeed;
             rb.angularVelocity = Random.insideUnitSphere * fragmentSpin;
 
-            Destroy(rb.gameObject, fragmentLifetime + Random.Range(0f, 5f));
+            if (rb.TryGetComponent<Renderer>(out Renderer r))
+                r.material.color = color;
         }
 
+        Destroy(broken, fragmentLifetime);
         Destroy(gameObject);
     }
 }

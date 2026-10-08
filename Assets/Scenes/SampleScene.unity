@@ -5610,8 +5610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f81a995b4b2d2ac7bfe997c2c29ead9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Asteroid
-  ore: 100
-  maxOre: 100
+  ore: 20
+  maxOre: 20
   heatPerSecond: 0.4
   coolPerSecond: 0.2
   baseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
