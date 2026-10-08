@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Spaceship Simulator2.slnx"
+    "dotnet.defaultSolution": "Spaceship-Simulator.slnx"
 }
