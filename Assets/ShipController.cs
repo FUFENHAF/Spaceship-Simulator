@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 public class ShipController : MonoBehaviour
 {
     [Header("BasicElements")]
-    [SerializeField] private float health = 100;
-    [SerializeField] private float maxHealth = 100;
-    [SerializeField] private float cargo = 0;
+    [SerializeField] private float health = 100f;
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float cargo = 0f;
     [SerializeField] private float cargoCapacity = 1_000f;
 
     [Header("Thrust")]
@@ -19,9 +19,11 @@ public class ShipController : MonoBehaviour
 
     [Header("Modules")]
     [SerializeField] private AttachPoint[] attachPoints;
+    [SerializeField] private Canvas uiCanvas;
 
     private ShipControls _controls;
     private Rigidbody _rb;
+    private HudController _hudController;
     
     // Flight assist slows the ship down when necessary - only for spinning!
     private bool _assistEnabled = true;
@@ -35,6 +37,7 @@ public class ShipController : MonoBehaviour
         _controls.Ship.ToggleFlightAssist.performed += OnToggleFlightAssist;
         _controls.Ship.ToggleLeftEngine.performed += OnToggleLeftEngine;
         _controls.Ship.ToggleRightEngine.performed += OnToggleRightEngine;
+        _hudController = uiCanvas.GetComponent<HudController>();
     }
 
     private void OnDestroy()
@@ -88,5 +91,15 @@ public class ShipController : MonoBehaviour
                     laser.SetThrottle(miningInput);
                     break;
             }
+    }
+
+    public void UpdateHealth(float healthDifference)
+    {
+        health += healthDifference;
+        if (health <= 0)
+        {
+            health = 0;
+        }
+        _hudController.SetHullIntegrity(health, maxHealth);
     }
 }
