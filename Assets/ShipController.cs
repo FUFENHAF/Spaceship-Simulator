@@ -4,6 +4,12 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class ShipController : MonoBehaviour
 {
+    [Header("BasicElements")]
+    [SerializeField] private float health = 100;
+    [SerializeField] private float maxHealth = 100;
+    [SerializeField] private float cargo = 0;
+    [SerializeField] private float cargoCapacity = 1_000f;
+
     [Header("Thrust")]
     [SerializeField] private float thrustForce = 50f;
 
