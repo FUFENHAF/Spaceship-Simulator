@@ -8,14 +8,20 @@ public class Engine : MonoBehaviour, IShipModule
     [Header("Visual")]
     [SerializeField] private ParticleSystem thrusterParticles;
 
+    [Header("UI")]
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private int engineIndex;
+
     private Rigidbody _shipRb;
     private float _throttle;
     private bool _running = true;
+    private HudController _hudController;
 
     private void Awake()
     {
         _shipRb = GetComponentInParent<Rigidbody>();
         GetComponentInParent<AttachPoint>()?.Attach(this);
+        _hudController = canvas.GetComponent<HudController>();
     }
 
     public void SetThrottle(float throttle)
@@ -23,7 +29,10 @@ public class Engine : MonoBehaviour, IShipModule
         _throttle = throttle;
     }
 
-    public void Toggle() => _running = !_running;
+    public void Toggle() {
+         _running = !_running;
+        _hudController.SetMotorState(engineIndex, _running);
+    }
 
     private void FixedUpdate()
     {
