@@ -98,6 +98,9 @@ public class ShipController : MonoBehaviour
                     laser.SetThrottle(miningInput);
                     break;
             }
+
+        if (_controls.Ship.MainMenu.WasPressedThisFrame() || _controls.UI.Resume.WasPressedThisFrame())
+            _gameManager.TogglePause();
     }
 
     public void UpdateHealth(float healthDifference)
