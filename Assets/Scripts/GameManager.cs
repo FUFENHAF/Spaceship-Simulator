@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject firstSelectedButton;
     [SerializeField] private string nextSceneName;
 
+    public bool IsPaused => menuPanel.activeSelf;
+
     private void Start()
     {
         Pause();
@@ -25,6 +27,18 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         menuPanel.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    public void TogglePause()
+    {
+        if (IsPaused)
+        {
+            Resume();
+        }
+        else 
+        {
+            Pause();
+        }
     }
 
     public void LoadNextLevel()
