@@ -5224,8 +5224,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12218326, y: 2.924112e-14, z: -3.599746e-15, w: 0.9925076}
-  m_LocalPosition: {x: 0, y: 2, z: -8}
+  m_LocalRotation: {x: 0.08248055, y: -5.285173e-15, z: 4.374144e-16, w: 0.9965927}
+  m_LocalPosition: {x: 0, y: 2, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11923,13 +11923,13 @@ MonoBehaviour:
   Radius: 5
   Orbits:
     Top:
-      Radius: 8
+      Radius: 12
       Height: 5
     Center:
-      Radius: 8
+      Radius: 12
       Height: 2
     Bottom:
-      Radius: 8
+      Radius: 12
       Height: -3
     SplineCurvature: 0.5
   RecenteringTarget: 2
@@ -12014,8 +12014,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182554351}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.122183256, y: 2.9023977e-14, z: -1.8359227e-15, w: 0.9925076}
-  m_LocalPosition: {x: 0, y: 2, z: -8}
+  m_LocalRotation: {x: 0.08248055, y: -5.529076e-15, z: 3.3844324e-15, w: 0.9965927}
+  m_LocalPosition: {x: 0, y: 2, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12079,6 +12079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1458740714}
+  - component: {fileID: 1458740715}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -12101,6 +12102,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1458740715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458740713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ffcdc8e294214d589801fefbe289e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  menuPanel: {fileID: 1836141766}
+  firstSelectedButton: {fileID: 1480023057}
+  nextSceneName: 
 --- !u!1 &1480023057
 GameObject:
   m_ObjectHideFlags: 0
