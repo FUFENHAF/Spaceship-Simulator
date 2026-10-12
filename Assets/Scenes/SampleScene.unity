@@ -6347,6 +6347,7 @@ MonoBehaviour:
   - {fileID: 255980090}
   - {fileID: 753224597}
   uiCanvas: {fileID: 1859828554}
+  gameManager: {fileID: 1458740713}
 --- !u!65 &740513591
 BoxCollider:
   m_ObjectHideFlags: 0

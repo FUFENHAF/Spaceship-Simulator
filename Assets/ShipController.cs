@@ -19,12 +19,16 @@ public class ShipController : MonoBehaviour
 
     [Header("Modules")]
     [SerializeField] private AttachPoint[] attachPoints;
+    
+    [Header("User Interface")]
     [SerializeField] private Canvas uiCanvas;
+    [SerializeField] private GameObject gameManager;
 
     private ShipControls _controls;
     private Rigidbody _rb;
     private HudController _hudController;
-    
+    private GameManager _gameManager;
+
     // Flight assist slows the ship down when necessary - only for spinning!
     private bool _assistEnabled = true;
     private float _angularDragStrong = 1f;
@@ -37,7 +41,10 @@ public class ShipController : MonoBehaviour
         _controls.Ship.ToggleFlightAssist.performed += OnToggleFlightAssist;
         _controls.Ship.ToggleLeftEngine.performed += OnToggleLeftEngine;
         _controls.Ship.ToggleRightEngine.performed += OnToggleRightEngine;
+
+        // Loading UI settings
         _hudController = uiCanvas.GetComponent<HudController>();
+        _gameManager = gameManager.GetComponent<GameManager>();
     }
 
     private void OnDestroy()
