@@ -52,15 +52,12 @@ public class TurretHead : MonoBehaviour
 
         if (Vector3.Angle(aimDirection, playerDirection) > aimConeAngle) return;
 
-        GameObject rocket = Instantiate(rocketPrefab, rocketSpawnPoint.position, rocketSpawnPoint.rotation);
+        Vector3 launchDirection = (_player.position - rocketSpawnPoint.position).normalized;
+
+        GameObject rocket = Instantiate(rocketPrefab, rocketSpawnPoint.position, Quaternion.FromToRotation(Vector3.up, launchDirection));
         if (rocket.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            rb.linearVelocity = (aimDirection.normalized) * rocketSpeed;
-        }
-        else
-        {
-            rocket.AddComponent<Rigidbody>();
-            rocket.GetComponent<Rigidbody>().linearVelocity = aimDirection.normalized * rocketSpeed;
+            rb.linearVelocity = launchDirection * rocketSpeed;
         }
 
         _cooldownTimer = fireCooldown;
