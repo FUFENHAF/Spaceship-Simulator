@@ -4955,6 +4955,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 330585546}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &243719351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243719355}
+  - component: {fileID: 243719354}
+  - component: {fileID: 243719353}
+  - component: {fileID: 243719352}
+  m_Layer: 0
+  m_Name: Asteroid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &243719352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243719351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca98b9fdb346dd0c5bfdfc50aee5c6d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FractureAsteroid
+  fractured: {fileID: 6516070941938034013, guid: 8a0d737915eae7a4e8c4176987503064, type: 3}
+  fragmentSpeed: 2
+  fragmentSpin: 0.1
+  fragmentLifetimeMin: 5
+  fragmentLifetimeMax: 10
+--- !u!54 &243719353
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243719351}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &243719354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243719351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f81a995b4b2d2ac7bfe997c2c29ead9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  ore: 20
+  maxOre: 20
+  heatPerSecond: 0.4
+  coolPerSecond: 0.2
+  baseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  hotColor: {r: 1, g: 0.3, b: 0.1, a: 1}
+--- !u!4 &243719355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243719351}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.07, y: 0.33, z: 22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1987219523}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &255980088
 GameObject:
   m_ObjectHideFlags: 0
@@ -6156,7 +6253,6 @@ GameObject:
   m_Component:
   - component: {fileID: 690633125}
   - component: {fileID: 690633124}
-  - component: {fileID: 690633123}
   - component: {fileID: 690633122}
   - component: {fileID: 690633126}
   m_Layer: 0
@@ -6193,19 +6289,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &690633123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690633121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4b8c7d88eebb9940b3c4196017b84df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Fracture
-  fractured: {fileID: 7273956540791742907, guid: 9cb5e7465eef1af4988889e41a071493, type: 3}
 --- !u!114 &690633124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6854,7 +6937,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 940753271}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1458740715}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &940753271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12200,7 +12295,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1480023060}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1458740715}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1480023060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22343,6 +22450,72 @@ MonoBehaviour:
   motorOffColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   motorIndexLeft: 0
   motorIndexRight: 1
+--- !u!1001 &1987219522
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 243719355}
+    m_Modifications:
+    - target: {fileID: 2746130058158584518, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_Name
+      value: Rock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831193266699088896, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 726fcd60d28f4fdf98252dc99dba4eb9, type: 2}
+    - target: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0000000814605
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+--- !u!4 &1987219523 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4506349960858086802, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+  m_PrefabInstance: {fileID: 1987219522}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1988111060
 GameObject:
   m_ObjectHideFlags: 0
@@ -22678,6 +22851,7 @@ SceneRoots:
   - {fileID: 740513589}
   - {fileID: 1182554358}
   - {fileID: 690633125}
+  - {fileID: 243719355}
   - {fileID: 1859828555}
   - {fileID: 902267322}
   - {fileID: 2039041625}
