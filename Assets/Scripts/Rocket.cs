@@ -6,7 +6,6 @@ public class Rocket : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Raketa narazila do:   {other.name}", this);
         ShipController ship = other.GetComponent<ShipController>();
 
         if (ship != null)
