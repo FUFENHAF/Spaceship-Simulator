@@ -3,7 +3,7 @@ using UnityEngine;
 public class Engine : MonoBehaviour, IShipModule
 {
     [Header("Thrust")]
-    [SerializeField] private float thrustForce = 25f;
+    [SerializeField] private float thrustForce = 2.5f;
     
     [Header("Visual")]
     [SerializeField] private ParticleSystem thrusterParticles;
