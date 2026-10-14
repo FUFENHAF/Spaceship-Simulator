@@ -38,5 +38,7 @@ public class FractureAsteroid : MonoBehaviour
 
         float lifetime = Random.Range(fragmentLifetimeMin, fragmentLifetimeMax);
         Destroy(broken, lifetime);
+
+        Destroy(gameObject);
     }
 }
