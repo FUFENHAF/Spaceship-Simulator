@@ -47,7 +47,7 @@ public class Engine : MonoBehaviour, IShipModule
     void Update()
     {
         bool emittingForward = _running && _throttle > 0.01f;
-        bool emittingBackward = _running && _throttle < 0.01f;
+        bool emittingBackward = _running && _throttle < - 0.01f;
 
         if (thrusterEffectForward.activeSelf != emittingForward)
             thrusterEffectForward.SetActive(emittingForward);
