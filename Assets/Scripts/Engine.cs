@@ -6,7 +6,7 @@ public class Engine : MonoBehaviour, IShipModule
     [SerializeField] private float thrustForce = 2.5f;
     
     [Header("Visual")]
-    [SerializeField] private ParticleSystem thrusterParticles;
+    [SerializeField] private GameObject thrusterEffect;
 
     [Header("UI")]
     [SerializeField] private Canvas canvas;
@@ -47,9 +47,7 @@ public class Engine : MonoBehaviour, IShipModule
     {
         bool emitting = _running && _throttle > 0.01f;
 
-        if (emitting && !thrusterParticles.isEmitting)
-            thrusterParticles.Play();
-        else if (!emitting && thrusterParticles.isEmitting)
-            thrusterParticles.Stop();
+        if (thrusterEffect.activeSelf != emitting)
+            thrusterEffect.SetActive(emitting);
     }
 }
