@@ -8,7 +8,7 @@ public class Rocket : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ShipController ship = other.GetComponent<ShipController>();
-        Asteroid asteroid = other.GetComponent<Asteroid>();
+        Asteroid asteroid = other.GetComponentInParent<Asteroid>();
 
         if (ship != null)
         {
