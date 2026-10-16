@@ -3,6 +3,7 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     [SerializeField] private float damage = 10f;
+    [SerializeField] private GameObject explosionPrefab;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -11,7 +12,10 @@ public class Rocket : MonoBehaviour
         if (ship != null)
         {
             ship.UpdateHealth(-damage);
-            // TODO: explosion here
+            if (explosionPrefab != null)
+            {
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }
