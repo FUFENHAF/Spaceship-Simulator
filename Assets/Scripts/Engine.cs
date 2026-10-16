@@ -6,7 +6,8 @@ public class Engine : MonoBehaviour, IShipModule
     [SerializeField] private float thrustForce = 2.5f;
     
     [Header("Visual")]
-    [SerializeField] private GameObject thrusterEffect;
+    [SerializeField] private GameObject thrusterEffectForward;
+    [SerializeField] private GameObject thrusterEffectBackward;
 
     [Header("UI")]
     [SerializeField] private Canvas canvas;
@@ -45,12 +46,20 @@ public class Engine : MonoBehaviour, IShipModule
     // Update is called once per frame
     void Update()
     {
-        bool emitting = _running && _throttle > 0.01f;
+        bool emittingForward = _running && _throttle > 0.01f;
+        bool emittingBackward = _running && _throttle < 0.01f;
 
-        if (thrusterEffect.activeSelf != emitting)
-            thrusterEffect.SetActive(emitting);
+        if (thrusterEffectForward.activeSelf != emittingForward)
+            thrusterEffectForward.SetActive(emittingForward);
 
-        float scale = Mathf.Lerp(0.4f, 1f, _throttle);
-        thrusterEffect.transform.localScale = Vector3.one * scale;
+        if (thrusterEffectBackward.activeSelf != emittingBackward)
+            thrusterEffectBackward.SetActive(emittingBackward);
+
+        // Scaling the throttle for greater visual cue
+        float scaleForward = Mathf.Lerp(0.4f, 1f, _throttle);
+        thrusterEffectForward.transform.localScale = Vector3.one * scaleForward;
+
+        float scaleBackward = Mathf.Lerp(0.4f, 1f, - _throttle);
+        thrusterEffectBackward.transform.localScale = Vector3.one * scaleBackward;
     }
 }
