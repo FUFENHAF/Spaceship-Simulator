@@ -8,11 +8,20 @@ public class Rocket : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ShipController ship = other.GetComponent<ShipController>();
+        Asteroid asteroid = other.GetComponent<Asteroid>();
 
         if (ship != null)
         {
             ship.UpdateHealth(-damage);
             if (explosionPrefab != null)
+            {
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            }
+            Destroy(gameObject);
+        }
+        else if (asteroid != null)
+        {
+            asteroid.Mine(damage);
             {
                 Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             }
