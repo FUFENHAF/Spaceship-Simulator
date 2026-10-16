@@ -24,6 +24,9 @@ public class ShipController : MonoBehaviour
     [SerializeField] private Canvas uiCanvas;
     [SerializeField] private GameObject gameManager;
 
+    [Header("VisualEffect")]
+    [SerializeField] private GameObject shipDestructionEffectPrefab;
+
     private ShipControls _controls;
     private Rigidbody _rb;
     private HudController _hudController;
@@ -108,8 +111,14 @@ public class ShipController : MonoBehaviour
         health += healthDifference;
         if (health <= 0)
         {
-            health = 0;
+            DestroyShip();
         }
         _hudController.SetHullIntegrity(health, maxHealth);
+    }
+
+    private void DestroyShip()
+    {
+        Instantiate(shipDestructionEffectPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
