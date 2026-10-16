@@ -49,5 +49,8 @@ public class Engine : MonoBehaviour, IShipModule
 
         if (thrusterEffect.activeSelf != emitting)
             thrusterEffect.SetActive(emitting);
+
+        float scale = Mathf.Lerp(0.4f, 1f, _throttle);
+        thrusterEffect.transform.localScale = Vector3.one * scale;
     }
 }
