@@ -9,6 +9,10 @@ public class FractureAsteroid : MonoBehaviour
     [SerializeField] private float fragmentSpeed = 2f;
     [SerializeField] private float fragmentSpin = 1f;
 
+
+    [Header("Visual")]
+    [SerializeField] private GameObject asteroidExplosionVisualPrefab;
+
     [Header("Cleanup")]
     [SerializeField] private float fragmentLifetimeMin = 5f;
     [SerializeField] private float fragmentLifetimeMax = 10f;
@@ -38,6 +42,8 @@ public class FractureAsteroid : MonoBehaviour
 
         float lifetime = Random.Range(fragmentLifetimeMin, fragmentLifetimeMax);
         Destroy(broken, lifetime);
+        
+        Instantiate(asteroidExplosionVisualPrefab, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }
