@@ -22,13 +22,16 @@ public class Asteroid : MonoBehaviour
         _material = GetComponentInChildren<Renderer>().material;   // .material = vlastní instance, nesdílí se
     }
 
-    public void Mine(float amount)
+    public float Mine(float amount)
     {
+        float mined = (amount >= ore) ? ore : amount;
         ore -= amount;
         _heat = Mathf.Min(_heat + heatPerSecond * Time.deltaTime, 1f);
 
         if (ore <= 0f)
             _fracture.FractureObject();
+
+        return amount;
     }
 
     private void Update()
