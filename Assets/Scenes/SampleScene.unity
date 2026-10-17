@@ -5087,6 +5087,7 @@ MonoBehaviour:
   fractured: {fileID: 6516070941938034013, guid: 8a0d737915eae7a4e8c4176987503064, type: 3}
   fragmentSpeed: 2
   fragmentSpin: 0.1
+  asteroidExplosionVisualPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
   fragmentLifetimeMin: 5
   fragmentLifetimeMax: 10
 --- !u!54 &243719353
@@ -6657,6 +6658,7 @@ MonoBehaviour:
   fractured: {fileID: 7273956540791742907, guid: 9cb5e7465eef1af4988889e41a071493, type: 3}
   fragmentSpeed: 2
   fragmentSpin: 1
+  asteroidExplosionVisualPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
   fragmentLifetimeMin: 5
   fragmentLifetimeMax: 10
 --- !u!1 &740513587
