@@ -12,6 +12,9 @@ public class MiningLaser : MonoBehaviour, IShipModule
     [SerializeField] private ParticleSystem hitSparks;
     [SerializeField] private Transform beamOrigin;
 
+    [Header("Aiming")]
+    [SerializeField] private float maxAimAngle = 30f;
+
     private Rigidbody _shipRb;
     private float _throttle;
     private ShipController _cargoHolder;
@@ -37,20 +40,28 @@ public class MiningLaser : MonoBehaviour, IShipModule
         bool firing = _throttle > 0.5f;
         if (!firing) { beam.enabled = false; return; }
 
-        Vector3 origin = beamOrigin.position;
-        Debug.DrawRay(origin, beamOrigin.forward * range, Color.red);   // A: vidíš čáru ve Scene
-
-        if (Physics.Raycast(origin, beamOrigin.forward, out RaycastHit hit, range))
+        Ray screenRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        if (Physics.Raycast(screenRay, out RaycastHit hit, range))
         {
-            beam.enabled = true;
-            beam.SetPosition(0, origin);
-            beam.SetPosition(1, hit.point);
+            Vector3 laserDirection = beamOrigin.forward;
+            Vector3 toTarget = (hit.point - beamOrigin.position).normalized;
+            float angle = Vector3.Angle(laserDirection, toTarget);
 
-            if (hit.collider.GetComponentInParent<Asteroid>() is Asteroid asteroid)
+            if (angle <= maxAimAngle)
             {
-                float mined = asteroid.Mine(mineRate * Time.deltaTime);
-                _cargoHolder.UpdateCargo(mined);
+                // cíl je v dosažitelném kuželu → zamiř na něj
+                beam.enabled = true;
+                beam.SetPosition(0, beamOrigin.position);
+                beam.SetPosition(1, hit.point);   // paprsek se "naklání" k cíli
+
+                if (hit.collider.GetComponentInParent<Asteroid>() is Asteroid asteroid)
+                    asteroid.Mine(mineRate * Time.deltaTime);
             }
+            else
+            {
+                // cíl je mimo kužel → nelze těžit (buď beam off, nebo beam rovně do(range))
+                beam.enabled = false;
+}
         }
         else
         {
