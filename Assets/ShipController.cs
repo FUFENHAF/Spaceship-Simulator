@@ -116,6 +116,11 @@ public class ShipController : MonoBehaviour
         _hudController.SetHullIntegrity(health, maxHealth);
     }
 
+    public void UpdateCargo(float amount)
+    {
+        cargo += amount;
+    }
+
     private void DestroyShip()
     {
         Instantiate(shipDestructionEffectPrefab, transform.position, Quaternion.identity);
