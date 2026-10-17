@@ -5426,8 +5426,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08248055, y: -5.285173e-15, z: 4.374144e-16, w: 0.9965927}
-  m_LocalPosition: {x: 0, y: 3.6100001, z: -19.28}
+  m_LocalRotation: {x: 0.16018228, y: 0.000000018181021, z: -0.000000002950374, w: 0.9870875}
+  m_LocalPosition: {x: 0, y: 5.61, z: -19.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5927,6 +5927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MiningLaser
   range: 60
   mineRate: 5
+  cargoHolderObject: {fileID: 740513587}
   beam: {fileID: 467219778}
   hitSparks: {fileID: 1061949107}
   beamOrigin: {fileID: 2068982815}
@@ -12340,7 +12341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineOrbitalFollow
-  TargetOffset: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 0, y: 2, z: 0}
   TrackerSettings:
     BindingMode: 4
     PositionDamping: {x: 1, y: 1, z: 1}
@@ -12442,8 +12443,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182554351}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08248055, y: -5.529076e-15, z: 3.3844324e-15, w: 0.9965927}
-  m_LocalPosition: {x: 0, y: 3.6100001, z: -19.28}
+  m_LocalRotation: {x: 0.16018225, y: 0.000000018181018, z: -0.0000000029503733, w: 0.9870875}
+  m_LocalPosition: {x: 0, y: 5.61, z: -19.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
