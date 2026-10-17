@@ -5,6 +5,7 @@ public class MiningLaser : MonoBehaviour, IShipModule
     [Header("Mining")]
     [SerializeField] private float range = 60f;
     [SerializeField] private float mineRate = 5f;
+    [SerializeField] private GameObject cargoHolderObject;
     
     [Header("Visual")]
     [SerializeField] private LineRenderer beam;
@@ -13,11 +14,14 @@ public class MiningLaser : MonoBehaviour, IShipModule
 
     private Rigidbody _shipRb;
     private float _throttle;
+    private ShipController _cargoHolder;
 
     private void Awake()
     {
         GetComponentInParent<AttachPoint>()?.Attach(this);
         if (beamOrigin == null) beamOrigin = transform;
+
+        _cargoHolder = cargoHolderObject.GetComponent<ShipController>();
     }
 
     public void SetThrottle(float throttle) => _throttle = throttle;
@@ -38,15 +42,14 @@ public class MiningLaser : MonoBehaviour, IShipModule
 
         if (Physics.Raycast(origin, beamOrigin.forward, out RaycastHit hit, range))
         {
-            Debug.Log($"LASER HIT: {hit.collider.name} at {hit.distance}");   // B
             beam.enabled = true;
             beam.SetPosition(0, origin);
             beam.SetPosition(1, hit.point);
 
             if (hit.collider.GetComponentInParent<Asteroid>() is Asteroid asteroid)
             {
-                Debug.Log("ASTEROID FOUND, mining");   // C
-                asteroid.Mine(mineRate * Time.deltaTime);
+                float mined = asteroid.Mine(mineRate * Time.deltaTime);
+                _cargoHolder.UpdateCargo(mined);
             }
         }
         else
