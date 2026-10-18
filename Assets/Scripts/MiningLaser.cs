@@ -43,25 +43,24 @@ public class MiningLaser : MonoBehaviour, IShipModule
         Ray screenRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(screenRay, out RaycastHit hit, range))
         {
+            // The following code was generated with Vibe Code (by Mistral AI) as an overhaul of my initial system
             Vector3 laserDirection = beamOrigin.forward;
             Vector3 toTarget = (hit.point - beamOrigin.position).normalized;
             float angle = Vector3.Angle(laserDirection, toTarget);
 
-            if (angle <= maxAimAngle)
+            if (angle <= maxAimAngle) // The laser can reach the crosshair
             {
-                // cíl je v dosažitelném kuželu → zamiř na něj
                 beam.enabled = true;
                 beam.SetPosition(0, beamOrigin.position);
-                beam.SetPosition(1, hit.point);   // paprsek se "naklání" k cíli
+                beam.SetPosition(1, hit.point);
 
                 if (hit.collider.GetComponentInParent<Asteroid>() is Asteroid asteroid)
                     asteroid.Mine(mineRate * Time.deltaTime);
             }
             else
             {
-                // cíl je mimo kužel → nelze těžit (buď beam off, nebo beam rovně do(range))
                 beam.enabled = false;
-}
+            }
         }
         else
         {
