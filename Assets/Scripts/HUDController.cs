@@ -8,6 +8,7 @@ public class HudController : MonoBehaviour
     [SerializeField] private Image hpFill;
     [SerializeField] private TMP_Text leftMotorIndicator;
     [SerializeField] private TMP_Text rightMotorIndicator;
+    [SerializeField] private TMP_Text cargoText;
 
     [Header("Colors")]
     [SerializeField] private Color motorOnColor = Color.white;
@@ -32,5 +33,10 @@ public class HudController : MonoBehaviour
         {
             rightMotorIndicator.color = state ? motorOnColor : motorOffColor;
         }
+    }
+
+    public void SetCargo(float current, float max)
+    {
+        cargoText.text = $"Cargo: {current:0} / {max:0}";
     }
 }
