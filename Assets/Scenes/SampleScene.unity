@@ -5367,7 +5367,7 @@ GameObject:
   - component: {fileID: 312482886}
   - component: {fileID: 312482885}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Display Cargo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6984,7 +6984,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   cargo: 0
-  cargoCapacity: 1000
+  cargoCapacity: 200
   thrustForce: 50
   pitchTorque: 20
   yawTorque: 20
@@ -13100,7 +13100,7 @@ GameObject:
   - component: {fileID: 1353649214}
   - component: {fileID: 1353649213}
   m_Layer: 5
-  m_Name: Button
+  m_Name: TryAgainButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13335,6 +13335,9 @@ MonoBehaviour:
   menuPanel: {fileID: 1836141766}
   firstSelectedButton: {fileID: 1480023057}
   nextSceneName: 
+  winPanel: {fileID: 1541519790}
+  losePanel: {fileID: 147708620}
+  retryButton: {fileID: 1353649211}
 --- !u!1 &1480023057
 GameObject:
   m_ObjectHideFlags: 0
@@ -13951,6 +13954,7 @@ MonoBehaviour:
   hpFill: {fileID: 860181635}
   leftMotorIndicator: {fileID: 310245746}
   rightMotorIndicator: {fileID: 1561789725}
+  cargoText: {fileID: 312482885}
   motorOnColor: {r: 1, g: 1, b: 1, a: 1}
   motorOffColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   motorIndexLeft: 0
