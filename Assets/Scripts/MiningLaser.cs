@@ -45,9 +45,7 @@ public class MiningLaser : MonoBehaviour, IShipModule
     {
         bool firing = _throttle > 0.5f;
 
-        _audioManager.SetLaserActive(firing);
-
-        if (!firing) { beam.enabled = false; return; }
+        if (!firing) { beam.enabled = false; _audioManager.SetLaserActive(false); return; }
 
         Ray screenRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(screenRay, out RaycastHit hit, range))
@@ -65,15 +63,19 @@ public class MiningLaser : MonoBehaviour, IShipModule
 
                 if (hit.collider.GetComponentInParent<Asteroid>() is Asteroid asteroid)
                     asteroid.Mine(mineRate * Time.deltaTime);
+
+                _audioManager.SetLaserActive(true);
             }
             else
             {
                 beam.enabled = false;
+                _audioManager.SetLaserActive(false);
             }
         }
         else
         {
             beam.enabled = false;
+            _audioManager.SetLaserActive(false);
         }
     }
 }
