@@ -120,11 +120,14 @@ public class ShipController : MonoBehaviour
     {
         cargo += amount;
         _hudController.SetCargo(cargo, cargoCapacity);
+        if (cargo >= cargoCapacity)
+            _gameManager.WinGame();
     }
 
     private void DestroyShip()
     {
         Instantiate(shipDestructionEffectPrefab, transform.position, Quaternion.identity);
+        _gameManager.LoseGame();
         Destroy(gameObject);
     }
 }
