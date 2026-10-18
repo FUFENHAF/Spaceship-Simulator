@@ -14,8 +14,17 @@ public class TurretHead : MonoBehaviour
     [SerializeField] private float fireCooldown = 2f;
     [SerializeField] private float rocketSpeed = 15f;
 
+    [Header("Audio")]
+    [SerializeField] private GameObject audioManagerObject;
+
     private Transform _player;
     private float _cooldownTimer;
+    private AudioManager _audioManager;
+    
+    private void Awake()
+    {
+        _audioManager = audioManagerObject.GetComponent<AudioManager>();
+    }
 
     private void Update()
     {
@@ -55,6 +64,9 @@ public class TurretHead : MonoBehaviour
         Vector3 launchDirection = (_player.position - rocketSpawnPoint.position).normalized;
 
         GameObject rocket = Instantiate(rocketPrefab, rocketSpawnPoint.position, Quaternion.FromToRotation(Vector3.up, launchDirection));
+        
+        _audioManager.PlayExplosion();
+
         if (rocket.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             rb.linearVelocity = launchDirection * rocketSpeed;
