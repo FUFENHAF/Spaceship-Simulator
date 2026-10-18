@@ -5197,6 +5197,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63c07d68c96395dc84aad32d06fa599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttachPoint
+--- !u!1 &256551087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256551089}
+  - component: {fileID: 256551088}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &256551088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256551087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cab3b907d80222e383c1a8d4b044bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  explosionClip: {fileID: 8300000, guid: 5521ae76b4fccd842baa0cb8c98c9470, type: 3}
+  missileShotClip: {fileID: 8300000, guid: 52e069bec70d35ec594bc04531ab4a0e, type: 3}
+  laserClip: {fileID: 8300000, guid: a9a0600364d3e0e9f8783101970a7595, type: 3}
+  engineThrustClip: {fileID: 8300000, guid: 407681bbb20989be19b330ad0e672bf1, type: 3}
+--- !u!4 &256551089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256551087}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &271160764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9359234e1495fb64eae2e8f9138d88fd, type: 3}
@@ -12692,6 +12740,7 @@ MonoBehaviour:
   aimConeAngle: 30
   fireCooldown: 2
   rocketSpeed: 15
+  audioManagerObject: {fileID: 256551087}
 --- !u!1 &1446605525 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 21f6aea0c9b788c4b9b6275efc33d0f9, type: 3}
@@ -13820,3 +13869,4 @@ SceneRoots:
   - {fileID: 902267322}
   - {fileID: 2039041625}
   - {fileID: 1458740714}
+  - {fileID: 256551089}
