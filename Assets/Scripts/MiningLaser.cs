@@ -61,8 +61,12 @@ public class MiningLaser : MonoBehaviour, IShipModule
                 beam.SetPosition(0, beamOrigin.position);
                 beam.SetPosition(1, hit.point);
 
+                float totalMined = 0f;
+
                 if (hit.collider.GetComponentInParent<Asteroid>() is Asteroid asteroid)
-                    asteroid.Mine(mineRate * Time.deltaTime);
+                    totalMined = asteroid.Mine(mineRate * Time.deltaTime);
+
+                _cargoHolder.UpdateCargo(totalMined);
 
                 _audioManager.SetLaserActive(true);
             }
