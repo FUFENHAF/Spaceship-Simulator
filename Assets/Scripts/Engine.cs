@@ -9,6 +9,9 @@ public class Engine : MonoBehaviour, IShipModule
     [SerializeField] private GameObject thrusterEffectForward;
     [SerializeField] private GameObject thrusterEffectBackward;
 
+    [Header("Audio")]
+    [SerializeField] private GameObject audioManagerObject;
+
     [Header("UI")]
     [SerializeField] private Canvas canvas;
     [SerializeField] private int engineIndex;
@@ -17,12 +20,15 @@ public class Engine : MonoBehaviour, IShipModule
     private float _throttle;
     private bool _running = true;
     private HudController _hudController;
+    private AudioManager _audioManager;
 
     private void Awake()
     {
         _shipRb = GetComponentInParent<Rigidbody>();
         GetComponentInParent<AttachPoint>()?.Attach(this);
         _hudController = canvas.GetComponent<HudController>();
+        
+        _audioManager = audioManagerObject.GetComponent<AudioManager>();
     }
 
     public void SetThrottle(float throttle)
@@ -61,5 +67,7 @@ public class Engine : MonoBehaviour, IShipModule
 
         float scaleBackward = Mathf.Lerp(0.4f, 1f, - _throttle);
         thrusterEffectBackward.transform.localScale = Vector3.one * scaleBackward;
+
+        _audioManager.SetThrust(Mathf.Abs(_throttle));
     }
 }

@@ -12548,6 +12548,7 @@ MonoBehaviour:
   thrustForce: 2.5
   thrusterEffectForward: {fileID: 865054493}
   thrusterEffectBackward: {fileID: 399883599}
+  audioManagerObject: {fileID: 256551087}
   canvas: {fileID: 1859828554}
   engineIndex: 0
 --- !u!1001 &1347561098
@@ -13713,6 +13714,7 @@ MonoBehaviour:
   thrustForce: 2.5
   thrusterEffectForward: {fileID: 1851216709}
   thrusterEffectBackward: {fileID: 1446605525}
+  audioManagerObject: {fileID: 256551087}
   canvas: {fileID: 1859828554}
   engineIndex: 1
 --- !u!1 &2039041621

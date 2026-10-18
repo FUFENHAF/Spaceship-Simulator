@@ -12,12 +12,16 @@ public class MiningLaser : MonoBehaviour, IShipModule
     [SerializeField] private ParticleSystem hitSparks;
     [SerializeField] private Transform beamOrigin;
 
+    [Header("Audio")]
+    [SerializeField] private GameObject audioManagerObject;
+
     [Header("Aiming")]
     [SerializeField] private float maxAimAngle = 30f;
 
     private Rigidbody _shipRb;
     private float _throttle;
     private ShipController _cargoHolder;
+    private AudioManager _audioManager;
 
     private void Awake()
     {
@@ -25,6 +29,8 @@ public class MiningLaser : MonoBehaviour, IShipModule
         if (beamOrigin == null) beamOrigin = transform;
 
         _cargoHolder = cargoHolderObject.GetComponent<ShipController>();
+
+        _audioManager = audioManagerObject.GetComponent<AudioManager>();
     }
 
     public void SetThrottle(float throttle) => _throttle = throttle;
@@ -38,6 +44,9 @@ public class MiningLaser : MonoBehaviour, IShipModule
     private void Mine()
     {
         bool firing = _throttle > 0.5f;
+
+        _audioManager.SetLaserActive(firing);
+
         if (!firing) { beam.enabled = false; return; }
 
         Ray screenRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
