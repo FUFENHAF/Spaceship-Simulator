@@ -119,6 +119,7 @@ public class ShipController : MonoBehaviour
     public void UpdateCargo(float amount)
     {
         cargo += amount;
+        _hudController.SetCargo(cargo, cargoCapacity);
     }
 
     private void DestroyShip()

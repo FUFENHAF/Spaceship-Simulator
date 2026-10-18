@@ -8,11 +8,36 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject firstSelectedButton;
     [SerializeField] private string nextSceneName;
 
+    [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject losePanel;
+    [SerializeField] private GameObject retryButton;
+
     public bool IsPaused => menuPanel.activeSelf;
 
     private void Start()
     {
+        winPanel.SetActive(false);
+        losePanel.SetActive(false);
         Pause();
+    }
+
+    public void WinGame()
+    {
+        Time.timeScale = 0f;
+        winPanel.SetActive(true);
+    }
+
+    public void LoseGame()
+    {
+        Time.timeScale = 0f;
+        losePanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(retryButton);
+    }
+
+    public void Retry()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Pause()
