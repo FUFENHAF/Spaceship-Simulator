@@ -65,7 +65,8 @@ public class TurretHead : MonoBehaviour
 
         GameObject rocket = Instantiate(rocketPrefab, rocketSpawnPoint.position, Quaternion.FromToRotation(Vector3.up, launchDirection));
         
-        _audioManager.PlayExplosion();
+        rocket.GetComponent<Rocket>().audioManager = _audioManager;
+        _audioManager.PlayMissileShot();
 
         if (rocket.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {

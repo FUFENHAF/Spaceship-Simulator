@@ -5,6 +5,8 @@ public class Rocket : MonoBehaviour
     [SerializeField] private float damage = 10f;
     [SerializeField] private GameObject explosionPrefab;
 
+    public AudioManager audioManager;
+
     private void OnTriggerEnter(Collider other)
     {
         ShipController ship = other.GetComponent<ShipController>();
@@ -17,6 +19,8 @@ public class Rocket : MonoBehaviour
             {
                 Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             }
+                    
+            audioManager.PlayExplosion();
             Destroy(gameObject);
         }
         else if (asteroid != null)
@@ -25,6 +29,9 @@ public class Rocket : MonoBehaviour
             {
                 Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             }
+
+                    
+            audioManager.PlayExplosion();
             Destroy(gameObject);
         }
     }
