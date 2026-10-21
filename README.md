@@ -28,3 +28,17 @@ The game is designed to be played with a controller.
  | A (Cross on PlayStation) | Activate |
  | B (Circle) | Mining |
  | X (Square) | Spin brake |
+
+## Instalation
+
+Currently, the game is only playable, if you download the source and launch it yourself.
+
+Many of the source files (textures, meshes and sounds) are very large and require [GitLFS](https://git-lfs.com/) to be pulled properly (only pointers to those files are stored). After installing it, set it up for your user account with
+```
+git lfs install
+```
+
+When installed, you can pull the LFS files using
+```
+git lfs pull
+```
