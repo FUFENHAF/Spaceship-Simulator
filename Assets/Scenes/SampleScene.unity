@@ -6986,8 +6986,8 @@ MonoBehaviour:
   cargo: 0
   cargoCapacity: 200
   thrustForce: 50
-  pitchTorque: 20
-  yawTorque: 20
+  pitchTorque: 2
+  yawTorque: 2
   attachPoints:
   - {fileID: 899660903}
   - {fileID: 255980090}
