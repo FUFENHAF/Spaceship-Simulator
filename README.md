@@ -17,17 +17,17 @@ survive and mine!
 The game is designed to be played with a controller.
 
 ## Controls
-   Input | Action |
- |---|---|
- | Left Joystick | Rotate the ship |
- | Right Joystick | Rotate the camera |
- | Right Trigger | Forward thrust |
- | Left Trigger | Reverse thrust |
- | D-Pad Left | Toggle left engine |
- | D-Pad Right | Toggle right engine |
- | A (Cross on PlayStation) | Activate |
- | B (Circle) | Mining |
- | X (Square) | Spin brake |
+   Input (GamePad) | Input (Keyboard + Mouse) | Action |
+ |---|---|---|
+ | Left Joystick | WSAD | Rotate the ship |
+ | Right Joystick | Mouse Movement | Rotate the camera |
+ | Right Trigger | Space | Forward thrust |
+ | Left Trigger | Shift | Reverse thrust |
+ | D-Pad Left | Q | Toggle left engine |
+ | D-Pad Right | E | Toggle right engine |
+ | A (Cross on PlayStation) | Left Mouse Button | Activate |
+ | B (Circle) | Left Mouse Button | Mining |
+ | X (Square) | X | Spin brake |
 
 ## Instalation
 
